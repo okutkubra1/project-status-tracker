@@ -1,0 +1,39 @@
+POST http://localhost:8080/api/projects
+Content-Type: application/json
+
+{
+  "name": "Mobil Uygulama Yenileme",
+  "description": "Çalışanların proje durumlarını görüntülemesini sağlayacak mobil uygulamanın geliştirilmesi",
+  "startDate": "2026-07-24",
+  "deadline": "2026-08-31"
+}
+###
+DELETE http://localhost:8080/api/projects/2
+
+###
+PUT http://localhost:8080/api/projects/1
+Content-Type: application/json
+
+{
+  "name": "Mobil Uygulama Yenileme",
+  "description": "Proje durumlarının görüntülenmesi için mobil uygulama geliştirme çalışması başlatıldı",
+  "startDate": "2026-07-24",
+  "deadline": "2026-08-31"
+}
+###
+POST http://localhost:8080/api/weekly-reports
+Content-Type: application/json
+
+{
+  "weekStartDate": "2026-07-21",
+  "completionPercentage": 25,
+  "completedWork": "Proje analizi tamamlandı. Project ve WeeklyReport API endpointleri geliştirildi.",
+  "risksOrBlockers": "Şu an engel bulunmuyor.",
+  "project": {
+    "id": 1
+  }
+}
+###
+GET http://localhost:8080/api/weekly-reports/project/1
+###
+GET http://localhost:8080/api/weekly-reports
