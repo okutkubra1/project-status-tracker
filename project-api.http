@@ -1,3 +1,9 @@
+# API çalışıyor mu?
+GET http://localhost:8080/api/health
+
+###
+
+# Proje oluşturma
 POST http://localhost:8080/api/projects
 Content-Type: application/json
 
@@ -7,10 +13,10 @@ Content-Type: application/json
   "startDate": "2026-07-24",
   "deadline": "2026-08-31"
 }
-###
-DELETE http://localhost:8080/api/projects/2
 
 ###
+
+# Proje güncelleme
 PUT http://localhost:8080/api/projects/1
 Content-Type: application/json
 
@@ -20,7 +26,20 @@ Content-Type: application/json
   "startDate": "2026-07-24",
   "deadline": "2026-08-31"
 }
+
 ###
+
+# Güncellenen projeyi getir
+GET http://localhost:8080/api/projects/1
+
+###
+
+# Proje listesi
+GET http://localhost:8080/api/projects
+
+###
+
+# Haftalık rapor oluştur
 POST http://localhost:8080/api/weekly-reports
 Content-Type: application/json
 
@@ -33,7 +52,13 @@ Content-Type: application/json
     "id": 1
   }
 }
+
 ###
+
+# Projeye ait raporları getir
 GET http://localhost:8080/api/weekly-reports/project/1
+
 ###
+
+# Tüm haftalık raporları getir
 GET http://localhost:8080/api/weekly-reports
