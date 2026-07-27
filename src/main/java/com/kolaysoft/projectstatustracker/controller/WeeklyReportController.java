@@ -4,7 +4,9 @@ import com.kolaysoft.projectstatustracker.entity.Project;
 import com.kolaysoft.projectstatustracker.entity.WeeklyReport;
 import com.kolaysoft.projectstatustracker.repository.ProjectRepository;
 import com.kolaysoft.projectstatustracker.repository.WeeklyReportRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -28,7 +30,9 @@ public class WeeklyReportController {
     public WeeklyReport createWeeklyReport(@RequestBody WeeklyReport weeklyReport) {
         Long projectId = weeklyReport.getProject().getId();
 
-        Project project = projectRepository.findById(projectId).orElseThrow();
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Proje bulunamadı: " + projectId));
 
         weeklyReport.setProject(project);
 

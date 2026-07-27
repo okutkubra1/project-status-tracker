@@ -62,3 +62,22 @@ GET http://localhost:8080/api/weekly-reports/project/1
 
 # Tüm haftalık raporları getir
 GET http://localhost:8080/api/weekly-reports
+###
+
+# Bulunamayan proje testi
+GET http://localhost:8080/api/projects/999
+###
+
+# Bulunamayan proje ile rapor ekleme
+POST http://localhost:8080/api/weekly-reports
+Content-Type: application/json
+
+{
+  "weekStartDate": "2026-07-21",
+  "completionPercentage": 50,
+  "completedWork": "Hata yönetimi testi",
+  "risksOrBlockers": "Yok",
+  "project": {
+    "id": 999
+  }
+}

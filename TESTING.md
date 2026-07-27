@@ -23,4 +23,9 @@ Testler, uygulama lokal ortamda çalışırken IntelliJ içindeki `project-api.h
 
 - H2 geçici bellek veritabanı kullanıldığı için uygulama yeniden başlatılınca test verileri silinir.
 - Geçersiz id durumlarında daha açıklayıcı hata mesajları ve 404 yanıtları sonraki geliştirme aşamasında eklenmelidir.
-- 
+
+## Hata Yönetimi Testleri
+
+- `GET /api/projects/999` isteği başlangıçta 500 hatası döndürüyordu. `ResponseStatusException` kullanılarak 404 Not Found ve “Proje bulunamadı” mesajı dönecek şekilde güncellendi.
+- Geçersiz proje id’siyle haftalık rapor ekleme isteği test edildi. İstek 404 Not Found döndü ve rapor kaydedilmedi.
+- Hata cevaplarındaki teknik stack trace bilgisi `server.error.include-stacktrace=never` ayarıyla gizlendi.
